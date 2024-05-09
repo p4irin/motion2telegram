@@ -8,6 +8,8 @@ motion_conf_path = motion_conf_template_path.replace('template.', '')
 motion_service_template_path = f'{root_path}/template.motion.service'
 motion_service_path = motion_service_template_path.replace('template.', '')
 
+subprocess.run(['sudo', 'systemctl', 'stop', 'motion.service'])
+
 
 def create_file_from_template(file_path: str, template_path: str) -> None:
     with open(template_path) as fh:
@@ -31,3 +33,4 @@ command = [
 ]
 subprocess.run(['sudo', '-S'] + command, check=True)
 subprocess.run(['sudo', 'systemctl', 'daemon-reload'])
+subprocess.run(['sudo', 'systemctl', 'start', 'motion.service'])
