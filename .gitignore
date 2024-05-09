@@ -1,3 +1,7 @@
 .git
 venv/
+log/
+media/
+motion.conf
+motion.service
 NOTES.md
