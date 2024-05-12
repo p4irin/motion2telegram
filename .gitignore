@@ -1,7 +1,16 @@
 .git
+.vscode
+build/
+dist/
 venv/
+__pycache__/
 log/
 media/
 motion.conf
 motion.service
 NOTES.md
+**/.coverage
+htmlcov/
+coverage.xml
+junit.xml
+test-output.xml
