@@ -1,4 +1,4 @@
-# motion2telegram
+# motion2telegram (WIP)
 
 Motion is a program that monitors the video signal from one or more cameras and is able to detect if a significant part of the picture has changed. I.e., it can detect motion.
 
