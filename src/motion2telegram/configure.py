@@ -9,8 +9,8 @@ module_path = os.path.dirname(os.path.abspath(__file__))
 def create_file_from_template(file_path: str, template_path: str) -> None:
     with open(template_path) as fh:
         template_content = fh.read()
-        file_content = template_content.replace('{% user %}', user)
-        file_content = file_content.replace('{% pwd %}', pwd)
+        file_content = template_content.replace('{% user %}', user) # type: ignore
+        file_content = file_content.replace('{% pwd %}', pwd) # type: ignore
         output = subprocess.run(['which', 'motion2telegram'], capture_output=True)
         file_content = file_content.replace('{% motion2telegram %}', output.stdout.decode())
 
