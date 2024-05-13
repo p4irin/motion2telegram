@@ -9,6 +9,7 @@ log/
 media/
 motion.conf
 motion.service
+motion.env
 NOTES.md
 **/.coverage
 htmlcov/
