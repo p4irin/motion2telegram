@@ -1,5 +1,4 @@
 import os
-import sys
 from telegram_notifier_bot import Notifier
 
 def send(picture: str) -> None:
