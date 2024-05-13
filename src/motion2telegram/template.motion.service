@@ -5,7 +5,7 @@ Documentation=man:motion(1)
 [Service]
 Type=simple
 User={% user %}
-EnvironmentFile=/home/{% user %}/motion2telegram/motion.env
+EnvironmentFile={% pwd %}/motion.env
 ExecStart=/usr/bin/motion
 
 [Install]
