@@ -82,3 +82,10 @@ push = false
 #"tests/tests.py" = [
 #  "^__version__ = '{version}'$",
 #]
+
+
+[tool.mypy]
+
+[[tool.mypy.overrides]]
+module = "telegram_notifier_bot"
+ignore_missing_imports = true
