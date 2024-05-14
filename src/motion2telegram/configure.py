@@ -19,9 +19,19 @@ def create_file_from_template(file_path: str, template_path: str) -> None:
 
 
 def init() -> None:
-    """Create a 'motion.env' file in the users' current working directory"""
+    """Create a 'motion.env' file in the users' current working directory
+    
+    and set permissions on the file.
+    Allow the user read and write access.
+    Allow the group read access.
+    Disallow access for anyone else.
+    """
 
-    subprocess.run(['cp', f'{module_path}/template.motion.env', f'{pwd}/motion.env'])
+    motion_env_path = f'{pwd}/motion.env'
+    subprocess.run(['cp', f'{module_path}/template.motion.env', motion_env_path])
+    subprocess.run(['chmod', 'u+rw-x', motion_env_path])
+    subprocess.run(['chmod', 'g+r-wx', motion_env_path])
+    subprocess.run(['chmod', 'o-rwx', motion_env_path])
 
 
 
