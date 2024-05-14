@@ -42,10 +42,6 @@ Create a motion.env file and change it's access permissions. This file is used b
 
 ```bash
 (venv) $ motion2telegram --init
-# Change permissions
-(venv) $ chmod u+rw-x motion.env
-(venv) $ chmod g+r-wx motion.env)
-(venv) $ chmod o-rwx motion.env
 ```
 Specify your Telegram chat id and bot token in the file motion.env
 
