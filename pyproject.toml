@@ -19,7 +19,7 @@ dependencies = [
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
-    "Programming Language :: Python :: 3.11.2",
+    "Programming Language :: Python :: 3.11",
     "Operating System :: POSIX :: Linux",
     "License :: OSI Approved :: MIT License",
 ]
@@ -86,3 +86,4 @@ push = false
 [[tool.mypy.overrides]]
 module = "telegram_notifier_bot"
 ignore_missing_imports = true
+
