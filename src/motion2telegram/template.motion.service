@@ -6,6 +6,7 @@ Documentation=man:motion(1)
 Type=simple
 User={% user %}
 EnvironmentFile={% pwd %}/motion.env
+ExecStartPre=/usr/bin/sleep 60
 ExecStart=/usr/bin/motion
 
 [Install]
