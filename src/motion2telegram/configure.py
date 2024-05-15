@@ -12,7 +12,7 @@ def create_file_from_template(file_path: str, template_path: str) -> None:
         file_content = template_content.replace('{% user %}', user) # type: ignore
         file_content = file_content.replace('{% pwd %}', pwd) # type: ignore
         output = subprocess.run(['which', 'motion2telegram'], capture_output=True)
-        file_content = file_content.replace('{% motion2telegram %}', output.stdout.decode())
+        file_content = file_content.replace('{% motion2telegram %}', output.stdout.decode().strip())
 
     with open(file_path, 'w') as fh:
         fh.write(file_content)
