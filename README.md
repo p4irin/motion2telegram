@@ -38,11 +38,14 @@ x.y.z
 
 ## Configuration
 
-Create a motion.env file and change it's access permissions. This file is used by the motion service to retrieve the Telegram bot token and the recipient's chat id.
+Create a motion.env file with the following command.
 
 ```bash
 (venv) $ motion2telegram --init
 ```
+
+This file is used by the motion service to retrieve the Telegram bot token and the recipient's chat id.
+
 Specify your Telegram chat id and bot token in the file motion.env
 
 ```bash
@@ -51,15 +54,17 @@ TELEGRAM_BOT_TOKEN=
 TELEGRAM_CHAT_ID=
 ```
 
-Configure motion and install /etc/motion/motion.conf and /lib/systemd/system/motion.service.
+Configure motion with
 
 ```bash
 (venv) $ motion2telegram --configure
 ```
 
-motion is configured to write logs into log/motion.log and media files into media/ relative to the current directory.
+This will install /etc/motion/motion.conf and /lib/systemd/system/motion.service.
 
-The motion systemd service will reference the motion.env file in the current directory. The command will stop, configure and bring the motion service back up.
+Motion is configured to write logs into log/motion.log and media files into media/YYYYMMDD relative to the current directory. Media captured on the same date are grouped together in a YYYYMMDD directory.
+
+The motion systemd service will reference the motion.env file in the current directory for the chat id and the bot token. The command will stop, configure and bring the motion service back up.
 
 ## Reference
 
