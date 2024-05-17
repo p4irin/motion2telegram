@@ -10,6 +10,7 @@ media/
 motion.conf
 motion.service
 motion.env
+motion.pid
 NOTES.md
 **/.coverage
 htmlcov/
