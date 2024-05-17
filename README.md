@@ -64,7 +64,7 @@ This will install /etc/motion/motion.conf and /lib/systemd/system/motion.service
 
 Motion is configured to write logs into log/motion.log and media files into media/YYYYMMDD relative to the current directory. Media captured on the same date are grouped together in a YYYYMMDD directory.
 
-The motion systemd service will reference the motion.env file in the current directory for the chat id and the bot token. The command will stop, configure and bring the motion service back up.
+The motion systemd service will reference the motion.env file in the current directory for the chat id and the bot token. The command will stop, configure and bring the motion service back up. If you need it, the process-id is written to motion.pid in the directory you installed motion2telegram.
 
 ## Reference
 
