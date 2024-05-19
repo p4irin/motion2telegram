@@ -18,6 +18,9 @@ dependencies = [
   "telegram-notifier-bot >= 1.0.0",
 ]
 classifiers = [
+    "Environment :: Console",
+    "Topic :: Home Automation",
+    "Intended Audience :: System Administrators",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.11",
     "Operating System :: POSIX :: Linux",
