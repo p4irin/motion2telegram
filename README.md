@@ -8,8 +8,12 @@ The intent of motion2telegram is to enable me to quickly setup a Raspberry Pi wi
 
 ## Stack
 
-- Raspberry Pi 1 B+
-- Raspberry Pi OS Lite (32-bit) (Port of Debian Bookworm)
+- Raspberry Pi
+    - 1 B+
+    - 4 B
+- Raspberry Pi OS
+    - Lite (32-bit) (Port of Debian Bookworm)
+    - Lite (64-bit)
 - Python 3.11.2
 - Motion 4.5.1
 - Logitech C270 HD WEBCAM
