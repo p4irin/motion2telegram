@@ -11,6 +11,7 @@ The intent of motion2telegram is to enable me to quickly setup a Raspberry Pi wi
 - Raspberry Pi
     - 1 B+
     - 4 B
+    - Zero W V1.1
 - Raspberry Pi OS
     - Lite (32-bit) (Port of Debian Bookworm)
     - Lite (64-bit)
