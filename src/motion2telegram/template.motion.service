@@ -8,6 +8,7 @@ User={% user %}
 EnvironmentFile={% pwd %}/motion.env
 ExecStartPre=/usr/bin/sleep 60
 ExecStart=/usr/bin/motion
+Restart=always
 
 [Install]
 WantedBy=multi-user.target
