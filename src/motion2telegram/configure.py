@@ -40,11 +40,14 @@ def configure() -> None:
     motion_conf_path = motion_conf_template_path.replace('template.', '')
     motion_service_template_path = f'{module_path}/template.motion.service'
     motion_service_path = motion_service_template_path.replace('template.', '')
+    mobile_phone_scan_service_template_path = f'{module_path}/template.mobile_phone_scan.service'
+    mobile_phone_scan_service_path = mobile_phone_scan_service_template_path.replace('template.', '')
 
     subprocess.run(['sudo', 'systemctl', 'stop', 'motion.service'])
 
     create_file_from_template(motion_conf_path, motion_conf_template_path)
     create_file_from_template(motion_service_path, motion_service_template_path)
+    create_file_from_template(mobile_phone_scan_service_path, mobile_phone_scan_service_template_path)
 
     command = [
         'cp', motion_conf_path, f'/etc/motion/{os.path.basename(motion_conf_path)}'
@@ -55,5 +58,12 @@ def configure() -> None:
         f'/lib/systemd/system/{os.path.basename(motion_service_path)}'
     ]
     subprocess.run(['sudo', '-S'] + command, check=True)
+    command = [
+        'cp', mobile_phone_scan_service_path,
+        f'/lib/systemd/system/{os.path.basename(mobile_phone_scan_service_path)}'
+    ]
+    subprocess.run(['sudo', '-S'] + command, check=True)
     subprocess.run(['sudo', 'systemctl', 'daemon-reload'])
     subprocess.run(['sudo', 'systemctl', 'start', 'motion.service'])
+    subprocess.run(['sudo', 'systemctl', 'start', 'mobile_phone_scan.service'])
+

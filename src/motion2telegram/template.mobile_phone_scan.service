@@ -1,0 +1,12 @@
+[Unit]
+Description=Mobile phone scan
+
+[Service]
+Type=simple
+EnvironmentFile={% pwd %}/motion.env
+ExecStartPre=/usr/bin/sleep 60
+ExecStart={% motion2telegram %} -s
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -11,9 +11,11 @@ motion.conf
 motion.service
 motion.env
 motion.pid
+mobile_phone_scan.service
 NOTES.md
 **/.coverage
 htmlcov/
 coverage.xml
 junit.xml
 test-output.xml
+
