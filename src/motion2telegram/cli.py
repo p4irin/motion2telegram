@@ -60,25 +60,24 @@ def cli() -> None:
         send(args.picture)
 
     if args.scan:
+        base_url = 'http://localhost:1313/0'
         phones = os.getenv('BLUETOOTH_ADDRESSES_PHONES')
-        print(f'--> {phones}')
         phones = phones.split(' ')
         while True:
             for phone in phones:
-                detection_status = requests.get('http://localhost:1313/0/detection/status').text.strip()
+                detection_status = requests.get(
+                    f'{base_url}/detection/status'
+                ).text.strip()
 
                 command = [
                     'l2ping', '-c', '1', '-t', '30', phone
                 ]
                 try:
                     subprocess.run(['sudo'] + command, check=True)
-                    # print(f'detection_status: {detection_status}')
                     if 'ACTIVE' in detection_status:
-                        # print('SHOULD TURN OFF')
-                        r = requests.get('http://localhost:1313/0/action/quit')
+                        r = requests.get(f'{base_url}/action/quit')
                 except:
                     if 'NOT RUNNING' in detection_status:
-                        # print('SHOULD TURN ON')
-                        r = requests.get('http://localhost:1313/0/action/restart')
+                        r = requests.get(f'{base_url}/action/restart')
             sleep(300) 
 
