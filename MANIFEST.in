@@ -1,3 +1,5 @@
 include src/motion2telegram/template.motion.env
 include src/motion2telegram/template.motion.conf
 include src/motion2telegram/template.motion.service
+include src/motion2telegram/template.mobile_phone_scan.service
+
