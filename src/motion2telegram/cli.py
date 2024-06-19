@@ -63,6 +63,7 @@ def cli() -> None:
         base_url = 'http://localhost:1313/0'
         phones = os.getenv('BLUETOOTH_ADDRESSES_PHONES')
         phones = phones.split(' ')
+        scan_interval = int(os.getenv('MOBILE_PHONE_SCAN_INTERVAL'))
         while True:
             for phone in phones:
                 detection_status = requests.get(
@@ -79,5 +80,5 @@ def cli() -> None:
                 except:
                     if 'NOT RUNNING' in detection_status:
                         r = requests.get(f'{base_url}/action/restart')
-            sleep(300) 
+            sleep(scan_interval)
 
