@@ -44,6 +44,7 @@ def configure() -> None:
     mobile_phone_scan_service_path = mobile_phone_scan_service_template_path.replace('template.', '')
 
     subprocess.run(['sudo', 'systemctl', 'stop', 'motion.service'])
+    subprocess.run(['sudo', 'systemctl', 'stop', 'mobile_phone_scan.service'])
 
     create_file_from_template(motion_conf_path, motion_conf_template_path)
     create_file_from_template(motion_service_path, motion_service_template_path)
