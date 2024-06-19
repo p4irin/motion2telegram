@@ -1,3 +1,7 @@
+import os
+import requests
+import subprocess
+from time import sleep
 import argparse
 from . import __version__
 from .configure import configure, init
@@ -34,6 +38,12 @@ def cli() -> None:
         help='Picture to send to a Telegram user/group'
     )
 
+    parser.add_argument(
+        '-s', '--scan',
+        action='store_true',
+        help='Scan mobile phones'
+    )
+
 
     args = parser.parse_args()
 
@@ -48,3 +58,27 @@ def cli() -> None:
 
     if args.picture:
         send(args.picture)
+
+    if args.scan:
+        base_url = 'http://localhost:1313/0'
+        phones = os.getenv('BLUETOOTH_ADDRESSES_PHONES')
+        phones = phones.split(' ')
+        scan_interval = int(os.getenv('MOBILE_PHONE_SCAN_INTERVAL'))
+        while True:
+            for phone in phones:
+                detection_status = requests.get(
+                    f'{base_url}/detection/status'
+                ).text.strip()
+
+                command = [
+                    'l2ping', '-c', '1', '-t', '30', phone
+                ]
+                try:
+                    subprocess.run(['sudo'] + command, check=True)
+                    if 'ACTIVE' in detection_status:
+                        r = requests.get(f'{base_url}/action/quit')
+                except:
+                    if 'NOT RUNNING' in detection_status:
+                        r = requests.get(f'{base_url}/action/restart')
+            sleep(scan_interval)
+
