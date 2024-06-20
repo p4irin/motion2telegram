@@ -62,10 +62,10 @@ def cli() -> None:
     if args.scan:
         base_url = 'http://localhost:1313/0'
         phones = os.getenv('BLUETOOTH_ADDRESSES_PHONES')
-        phones = phones.split(' ')
-        scan_interval = int(os.getenv('MOBILE_PHONE_SCAN_INTERVAL'))
+        phones = phones.split(' ') # type: ignore
+        scan_interval = int(os.getenv('MOBILE_PHONE_SCAN_INTERVAL')) # type: ignore
         while True:
-            for phone in phones:
+            for phone in phones: # type: ignore
                 detection_status = requests.get(
                     f'{base_url}/detection/status'
                 ).text.strip()
@@ -76,9 +76,9 @@ def cli() -> None:
                 try:
                     subprocess.run(['sudo'] + command, check=True)
                     if 'ACTIVE' in detection_status:
-                        r = requests.get(f'{base_url}/action/quit')
-                except:
+                        requests.get(f'{base_url}/action/quit')
+                except Exception:
                     if 'NOT RUNNING' in detection_status:
-                        r = requests.get(f'{base_url}/action/restart')
+                        requests.get(f'{base_url}/action/restart')
             sleep(scan_interval)
 
