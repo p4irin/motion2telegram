@@ -76,9 +76,9 @@ def cli() -> None:
                 try:
                     subprocess.run(['sudo'] + command, check=True)
                     if 'ACTIVE' in detection_status:
-                        r = requests.get(f'{base_url}/action/quit')
+                        requests.get(f'{base_url}/action/quit')
                 except:
                     if 'NOT RUNNING' in detection_status:
-                        r = requests.get(f'{base_url}/action/restart')
+                        requests.get(f'{base_url}/action/restart')
             sleep(scan_interval)
 
