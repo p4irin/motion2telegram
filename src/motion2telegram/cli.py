@@ -62,10 +62,10 @@ def cli() -> None:
     if args.scan:
         base_url = 'http://localhost:1313/0'
         phones = os.getenv('BLUETOOTH_ADDRESSES_PHONES')
-        phones = phones.split(' ')
-        scan_interval = int(os.getenv('MOBILE_PHONE_SCAN_INTERVAL'))
+        phones = phones.split(' ') # type: ignore
+        scan_interval = int(os.getenv('MOBILE_PHONE_SCAN_INTERVAL')) # type: ignore
         while True:
-            for phone in phones:
+            for phone in phones: # type: ignore
                 detection_status = requests.get(
                     f'{base_url}/detection/status'
                 ).text.strip()
