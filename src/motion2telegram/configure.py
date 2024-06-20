@@ -52,6 +52,21 @@ def configure() -> None:
     mobile_phone_scan_service_template = f'{module_dir}/template.mobile_phone_scan.service'
     mobile_phone_scan_service = mobile_phone_scan_service_template.replace('template.', '')
 
+    motion_is_enabled = subprocess.run(
+        ['systemctl', 'is-enabled', 'motion.service'], capture_output=True
+    ).stdout.decode().strip == 'enabled'
+
+    if not motion_is_enabled:
+        subprocess.run(['sudo', 'systemctl', 'enable', 'motion.service'])
+
+    mobile_phone_scan_is_enabled = subprocess.run(
+        ['systemctl', 'is-enabled', 'mobile_phone_scan.service'],
+        capture_output=True
+    ).stdout.decode().strip == 'enabled'
+
+    if not mobile_phone_scan_is_enabled:
+        subprocess.run(['sudo', 'systemctl', 'enable', 'mobile_phone_scan.service'])
+
     subprocess.run(['sudo', 'systemctl', 'stop', 'motion.service'])
     subprocess.run(['sudo', 'systemctl', 'stop', 'mobile_phone_scan.service'])
 
