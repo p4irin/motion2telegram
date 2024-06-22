@@ -1,5 +1,5 @@
 import os
-import subprocess
+import subprocess as sp
 
 user = os.getenv('USER')
 pwd = os.getenv('PWD')

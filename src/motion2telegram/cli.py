@@ -1,6 +1,6 @@
 import os
 import requests
-import subprocess
+import subprocess as sp
 from time import sleep
 import argparse
 from . import __version__
