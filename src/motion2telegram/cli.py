@@ -74,10 +74,10 @@ def cli() -> None:
                     'l2ping', '-c', '1', '-t', '30', phone
                 ]
                 try:
-                    subprocess.run(['sudo'] + command, check=True)
+                    sp.run(['sudo'] + command, check=True)
                     if 'ACTIVE' in detection_status:
                         requests.get(f'{base_url}/action/quit')
-                except subprocess.CalledProcessError:
+                except sp.CalledProcessError:
                     if 'NOT RUNNING' in detection_status:
                         requests.get(f'{base_url}/action/restart')
             sleep(scan_interval)
