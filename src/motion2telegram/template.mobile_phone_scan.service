@@ -1,10 +1,11 @@
 [Unit]
 Description=Mobile phone scan
+After=motion.service
+Requires=motion.service
 
 [Service]
 Type=simple
 EnvironmentFile={% pwd %}/motion.env
-ExecStartPre=/usr/bin/sleep 60
 ExecStart={% motion2telegram %} -s
 Restart=always
 
