@@ -1,3 +1,4 @@
+[![motion2telegram CI](https://github.com/p4irin/motion2telegram/actions/workflows/ci.yml/badge.svg)](https://github.com/p4irin/motion2telegram/actions/workflows/ci.yml)
 # motion2telegram
 
 > Motion is a program that monitors the video signal from one or more cameras and is able to detect if a significant part of the picture has changed. I.e., it can detect motion.
